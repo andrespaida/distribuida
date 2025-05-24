@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -13,62 +13,70 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f7fa;
+      background: linear-gradient(to right, #e3f2fd, #fce4ec);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }
-
-    .menu-container {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      display: flex;
-      gap: 1rem;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    h1 {
-      margin-bottom: 1rem;
       color: #333;
     }
 
+    .menu-container {
+      background: #ffffff;
+      padding: 2.5rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-container:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+      color: #f44336;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
     .menu {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
+      width: 100%;
     }
 
     .menu button {
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem 1rem;
       font-size: 1rem;
       border: none;
-      border-radius: 8px;
-      background: #007bff;
-      color: white;
+      border-radius: 12px;
+      background: #2196f3;
+      color: #fff;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .menu button:hover {
-      background: #0056b3;
+      background: #1976d2;
+      transform: translateY(-3px);
     }
 
     @media (max-width: 600px) {
       .menu {
-        flex-direction: column;
-        gap: 0.5rem;
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
   <div class="menu-container">
-    <h1 style="background-color: #f35c5c;">Bienvenido</h1>
+    <h1>Bienvenido</h1>
     <div class="menu">
       <button onclick="redirectTo('https://www.google.com')">Vercel</button>
       <button onclick="redirectTo('https://www.youtube.com')">Digital Ocean</button>
