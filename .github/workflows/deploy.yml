@@ -3,21 +3,28 @@ name: Deploy Static Site to Vercel
 on:
   push:
     branches:
-      - main  # o 'master' si tu rama principal se llama así
+      - main  # Cambia a 'master' si tu rama principal se llama así
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Install Vercel CLI
         run: npm install -g vercel
 
-      - name: Pull Vercel Environment Info
-        run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+      - name: Create vercel.json
+        run: |
+          echo '{
+            "projectId": "${{ secrets.VERCEL_PROJECT_ID }}",
+            "orgId": "${{ secrets.VERCEL_ORG_ID }}"
+          }' > vercel.json
+
+      - name: Pull Vercel environment info
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
-        run: vercel --prod --token=$VERCEL_TOKEN
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
